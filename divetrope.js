@@ -52,6 +52,8 @@
   };
   const brakeCurve = (x) => x - x * x * x + x * x * x * x / 2;   // ∫(1 - smoothstep), 1/2 at x = 1
 
+  // The stroked icons are adapted from Lucide (https://lucide.dev, ISC
+  // license; see THIRD_PARTY_NOTICES.md).
   const svg = (body, extra = '') => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${body}</svg>`;
   const ICON = {
     soundOn: svg('<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/>', 'class="on"'),
@@ -389,6 +391,7 @@
 }
 :host([data-dt-mode="player"]) .stage { position: absolute; inset: 0; height: auto; touch-action: pan-y; }
 .dive { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* ---------------------------------------------------------------- top bar */
 .bar {
@@ -801,7 +804,8 @@
 
   const HTML = `
 <div class="stage is-intro" id="stage" part="stage">
-  <canvas class="dive" id="dive" aria-hidden="true"></canvas>
+  <canvas class="dive" id="dive" role="img"></canvas>
+  <p class="sr-only" id="scene-alt" aria-live="polite"></p>
   <header class="bar">
     <a class="brand" id="brand"><img class="logo" alt="" hidden><span class="name"></span><span class="badge" hidden></span></a>
     <div class="bar-actions">
@@ -851,8 +855,7 @@
   function loadFonts(href) {
     if (!href || fontsLoaded.has(href)) return;
     fontsLoaded.add(href);
-    const esc = window.CSS && window.CSS.escape ? window.CSS.escape(href) : href;
-    if (document.querySelector(`link[rel="stylesheet"][href="${esc}"]`)) return;
+    if ([...document.querySelectorAll('link[rel="stylesheet"]')].some((l) => l.href === href)) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
@@ -876,6 +879,7 @@
     const stage = $('stage');
     const canvas = $('dive');
     const ctx = canvas.getContext('2d', { alpha: false });
+    const sceneAlt = $('scene-alt');
     const headEl = $('headline');
     const eyebrowEl = headEl.querySelector('.eyebrow');
     const headText = headEl.querySelector('h2');
@@ -1190,6 +1194,12 @@
       const end = key === 'end';
       const L = (end ? page.end : layers[key]) || {};
       const text = L.body || L.sub || '';
+      // The picture itself, for screen readers: the layer's alt text (the end
+      // card sits on the last layer), read out as each scene arrives.
+      const pic = end ? layers[N - 1] : L;
+      const alt = pic.alt || pic.label || '';
+      canvas.setAttribute('aria-label', alt);
+      sceneAlt.textContent = alt;
       eyebrowEl.textContent = L.eyebrow || '';
       eyebrowEl.hidden = !L.eyebrow;
       headText.textContent = L.headline || '';
@@ -1591,7 +1601,7 @@
       (theme.chips || []).slice(0, 3).forEach((c, i) => rules.push(`--dt-chip-${i + 1}: ${c};`));
       $('theme').textContent = `:host { ${rules.join(' ')} }`;
       if (theme.ink) inkColor = theme.ink;
-      loadFonts(theme.fontsHref);
+      if (theme.fontsHref) loadFonts(url(theme.fontsHref));   // relative to the manifest, like the layers
     }
 
     function fillChrome() {

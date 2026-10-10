@@ -1,6 +1,7 @@
 # Build both example dives, test the player in headless Chrome, and publish
-# the result to GitHub Pages from main. The landing page is examples/space;
-# the commercial lives under /yepedu/.
+# the landing page (examples/space) to GitHub Pages from main. The Yep Edu
+# commercial is built and tested here but not published: GitHub Pages is not
+# for commercial sites.
 name: Site
 
 on:
@@ -42,6 +43,8 @@ jobs:
           python tools/smooth_test.py http://127.0.0.1:8000/yepedu/
           python tools/embed_test.py http://127.0.0.1:8000/yepedu/
           python tools/pop_test.py http://127.0.0.1:8000/
+      - name: Keep the commercial off Pages
+        run: rm -rf _site/yepedu
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main'
         with:

@@ -28,6 +28,7 @@ Start one with `python build.py new <folder>`, or copy `examples/yepedu`.
 | `id` | Short name, used in file names. Letters, digits and dashes. |
 | `image` | Path to the image, relative to the folder. Any format Pillow reads. |
 | `label` | Shown on the dot for this scene. Defaults to `id`. |
+| `alt` | What the picture shows, in one sentence, for screen readers. The player reads it out as each scene arrives. Without it, readers who can't see the canvas hear only the `label`. |
 | `eyebrow` | Two to four words above the headline. |
 | `headline` | The line shown while the story plays. Keep it under about eight words so it reads in motion. |
 | `body` | One or two sentences, shown when the reader pauses or presses More. |
@@ -75,7 +76,12 @@ screen.
 | `onDark`, `onDarkDim` | `--dt-on-dark`, `--dt-on-dark-dim`: text |
 | `chips` | `--dt-chip-1` to `--dt-chip-3` |
 | `fontDisplay`, `fontText` | `--dt-font-display`, `--dt-font-text` |
-| `fontsHref` | A stylesheet URL that loads the fonts, such as a Google Fonts link |
+| `fontsHref` | A stylesheet that loads the fonts. A relative path such as `fonts/fonts.css` is read from the dive's `assets/` and resolves against the manifest, so embeds on other sites find it too. |
+
+Prefer self-hosted fonts to a Google Fonts link. A remote font service sees
+every visitor's IP address, and German courts have held that this needs the
+visitor's consent under the GDPR. The examples ship their fonts in
+`assets/fonts/` with each family's license next to the files.
 
 A host page can override any `--dt-*` variable on the element itself, plus
 `--dt-radius` (rounds the player's corners) and `--dt-top` (moves the pinned

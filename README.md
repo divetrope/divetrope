@@ -14,8 +14,7 @@ for the copy and colours, and a small Python build that turns your layer
 images into a static site.
 
 **Live:** [the landing page](https://divetrope.github.io/divetrope/) is a
-dive, and so is [a one-minute product commercial](https://divetrope.github.io/divetrope/yepedu/).
-The [embed demo](https://divetrope.github.io/divetrope/yepedu/demo.html)
+dive, and the [embed demo](https://divetrope.github.io/divetrope/demo.html)
 shows all three ways to put one on a page.
 
 ## Quick start
@@ -84,6 +83,9 @@ Embedding from another domain needs CORS on the host. The build writes a
   scene. There are no audio files.
 - With `prefers-reduced-motion`, the zoom follows the scroll directly with no
   easing, and scene videos stay still.
+- Screen readers hear each scene's `alt` text as it arrives, then its
+  headline. The dots are labelled buttons, and the keyboard can play, pause
+  and step.
 
 ## Docs
 
@@ -111,11 +113,17 @@ a built site:
 - `examples/space`: the landing page. A loop from Earth to a city, a
   rooftop, a glass of champagne, a bubble, a galaxy, and back to Earth.
 - `examples/yepedu`: a one-minute commercial for
-  [Yep Edu](https://edu.yepgent.com/), ending on a call to action.
+  [Yep Edu](https://edu.yepgent.com/), ending on a call to action. It isn't
+  on this project's site, because GitHub Pages is not for commercial pages;
+  build it with the quick start above.
 
 The example images were generated with AI image models.
 
 ## License
 
-[MIT](LICENSE), for the code and the example images. The Divetrope and Yep
-Edu names and logos are trademarks and are not covered by the license.
+[MIT](LICENSE) for the code. The example images are offered under the same
+license to the extent they are protected by copyright, which images made by
+AI may not be. Icons and fonts from other projects keep their own licenses:
+see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The Divetrope and Yep
+Edu names and logos are trademarks and are not covered by any of these
+licenses.

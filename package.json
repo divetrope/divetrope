@@ -4,7 +4,7 @@
   "description": "Endless-zoom stories for the web: a dependency-free web component where each scene hides the next one in its centre.",
   "main": "divetrope.js",
   "browser": "divetrope.js",
-  "files": ["divetrope.js"],
+  "files": ["divetrope.js", "THIRD_PARTY_NOTICES.md"],
   "keywords": ["infinite-zoom", "zoomquilt", "web-component", "custom-element", "scrollytelling", "storytelling", "canvas"],
   "homepage": "https://divetrope.github.io/divetrope/",
   "repository": { "type": "git", "url": "git+https://github.com/divetrope/divetrope.git" },

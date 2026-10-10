@@ -36,12 +36,13 @@
     ],
     "fontDisplay": "'Bricolage Grotesque', system-ui, sans-serif",
     "fontText": "Inter, system-ui, sans-serif",
-    "fontsHref": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Inter:wght@400;500;600&display=swap"
+    "fontsHref": "fonts/fonts.css"
   },
   "layers": [
     {
       "id": "earth",
       "label": "Earth",
+      "alt": "Earth from space, half in daylight and half at night, its cities lit",
       "eyebrow": "Divetrope",
       "headline": "Scroll into the picture.",
       "body": "Each scene hides the next one in its centre. Keep going, and the last one hides the first.",
@@ -50,6 +51,7 @@
     {
       "id": "continent",
       "label": "Continent",
+      "alt": "A continent seen from orbit as night falls across it",
       "eyebrow": "One file",
       "headline": "A web component, no dependencies.",
       "body": "Add one script tag and a manifest. No framework and no build step on your site.",
@@ -58,6 +60,7 @@
     {
       "id": "dusk",
       "label": "Nightfall",
+      "alt": "Green hills at nightfall, with lights gathering into a town",
       "eyebrow": "Three embeds",
       "headline": "A page, a section, or a player.",
       "body": "Take over the whole page, pin as a section while readers scroll, or sit in a window with its own Play button.",
@@ -66,6 +69,7 @@
     {
       "id": "city",
       "label": "The city",
+      "alt": "A city at night from above, its streets glowing gold",
       "eyebrow": "Play or scroll",
       "headline": "Play it like one long take.",
       "body": "Play runs the story with an adaptive score. Scroll, drag or tap the dots to take the wheel.",
@@ -74,16 +78,19 @@
     {
       "id": "downtown",
       "label": "Downtown",
+      "alt": "An old town at night from above, with a square block at its centre",
       "image": "images/04_downtown.webp"
     },
     {
       "id": "rooftops",
       "label": "Rooftops",
+      "alt": "A tiled roof from above, with a glass skylight in the middle",
       "image": "images/05_rooftops.webp"
     },
     {
       "id": "skylight",
       "label": "Skylight",
+      "alt": "Looking down through the skylight into a warm, candlelit bar",
       "eyebrow": "Your brand",
       "headline": "Copy, colours and fonts in one file.",
       "body": "Headlines, chips, theme, logo and the closing call to action all live in dive.json.",
@@ -92,11 +99,13 @@
     {
       "id": "couple",
       "label": "The couple",
+      "alt": "A couple at a small round table, smiling at each other by candlelight",
       "image": "images/07_couple.webp"
     },
     {
       "id": "table",
       "label": "Her glass",
+      "alt": "A glass of champagne on the wooden table between them",
       "eyebrow": "Any images",
       "headline": "Bring layers from any source.",
       "body": "Use an image model, a camera or a paintbrush. The build crops, feathers and sizes every layer.",
@@ -105,11 +114,13 @@
     {
       "id": "glass",
       "label": "Champagne",
+      "alt": "Looking straight down into the champagne, full of rising bubbles",
       "image": "images/09_glass.webp"
     },
     {
       "id": "bubbles",
       "label": "Bubbles",
+      "alt": "Bubbles in the champagne, one of them holding a galaxy",
       "eyebrow": "Open source",
       "headline": "MIT licensed.",
       "body": "Use it in client work, fork it, ship it.",
@@ -118,11 +129,13 @@
     {
       "id": "bubble-galaxy",
       "label": "The bubble",
+      "alt": "A spiral galaxy inside a single bubble",
       "image": "images/11_bubble-galaxy.webp"
     },
     {
       "id": "starfield",
       "label": "Galaxy arm",
+      "alt": "The heart of a galaxy, with a tiny Earth in its dark centre",
       "eyebrow": "Start here",
       "headline": "Two example dives ship with it.",
       "body": "This loop, and a one-minute product commercial that ends on a call to action.",
@@ -131,6 +144,7 @@
     {
       "id": "approach",
       "label": "Home",
+      "alt": "Earth, small and alone in a dark opening among the stars",
       "image": "images/13_approach.webp"
     }
   ]

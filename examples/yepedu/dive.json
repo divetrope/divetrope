@@ -52,7 +52,7 @@
     ],
     "fontDisplay": "Fraunces, Georgia, serif",
     "fontText": "Inter, system-ui, sans-serif",
-    "fontsHref": "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
+    "fontsHref": "fonts/fonts.css"
   },
   "score": {
     "sparkle": 4
@@ -61,6 +61,7 @@
     {
       "id": "kitchen",
       "label": "Morning practice",
+      "alt": "A girl at a sunny kitchen table, filling in a math worksheet",
       "eyebrow": "Yep Edu",
       "headline": "They're growing. On their own.",
       "body": "Practice that meets your child exactly where they are, guided by AI, and moves up the moment they're ready.",
@@ -70,6 +71,7 @@
     {
       "id": "worksheet",
       "label": "Their worksheet",
+      "alt": "Her worksheet up close: sums and differences, each answer checked",
       "eyebrow": "Practice at their level",
       "headline": "Paper or screen. Always their level.",
       "body": "Print a sheet with its answer key, or assign it on screen with read-aloud questions and a whiteboard for working things out.",
@@ -86,6 +88,7 @@
     {
       "id": "sprout",
       "label": "Growing",
+      "alt": "A sprout drawn on the page coming to life, a dewdrop on its leaf",
       "eyebrow": "Growth you can see",
       "headline": "The level moves up when they're ready.",
       "body": "Every question is scored on its own, so Yep Edu knows what they've mastered and moves them up only when they have. Levels are named, so a jump is a decision, not a surprise.",
@@ -95,6 +98,7 @@
     {
       "id": "dewdrop",
       "label": "A closer look",
+      "alt": "The dewdrop on the leaf, reflecting a sunrise over the hills",
       "eyebrow": "An AI tutor",
       "headline": "A tutor that asks, not tells.",
       "body": "When they're stuck, the tutor answers with a question that points the way, so the “aha” is theirs.",
@@ -104,6 +108,7 @@
     {
       "id": "hill",
       "label": "Step by step",
+      "alt": "A child climbing glowing steps up a hill toward a cottage at sunrise",
       "eyebrow": "The feeling of achievement",
       "headline": "Every step is theirs.",
       "body": "Finished sheets earn stars they can spend on rewards you choose. Badges level up as they keep going, and practice games turn the hard days into a race.",
@@ -119,6 +124,7 @@
     {
       "id": "window",
       "label": "Back home",
+      "alt": "Through the cottage window, a parent on the sofa looking at a tablet",
       "eyebrow": "For parents",
       "headline": "A clear view, from anywhere.",
       "body": "See the exact questions they missed, not just a score. Friends, classes and competitions only start with your yes, and you can take it back any time.",
@@ -128,6 +134,7 @@
     {
       "id": "tablet",
       "label": "Their progress",
+      "alt": "The tablet shows the girl's progress, marked On track",
       "eyebrow": "Where they stand",
       "headline": "Ahead, on track, or building. Never “behind”.",
       "body": "Yep Edu compares their working level with what's usual for this time of year, and shows it as growth.",

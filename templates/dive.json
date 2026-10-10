@@ -38,6 +38,7 @@
     {
       "id": "opening",
       "label": "Opening",
+      "alt": "What the first picture shows, in one sentence",
       "image": "images/00_opening.webp",
       "eyebrow": "Two to four words",
       "headline": "Readable in motion, under eight words.",
@@ -48,12 +49,14 @@
     {
       "id": "second",
       "label": "Second scene",
+      "alt": "What the second picture shows",
       "image": "images/01_second.webp",
       "headline": "Each scene hides the next one in its centre."
     },
     {
       "id": "closing",
       "label": "Closing",
+      "alt": "What the last picture shows",
       "image": "images/02_closing.webp",
       "headline": "And the last one hides the first."
     }

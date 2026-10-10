@@ -5,10 +5,13 @@
 Player window: the wheel scrolls the page (never the player), Play moves it,
 More opens the text while it keeps moving, a sideways drag scrubs. Scroll
 section: page scroll drives it while pinned and hands back after the end.
-Iframe: ?autoplay=1 starts muted once in view. Exits non-zero on a failure.
+Iframe: ?autoplay=1 starts muted once in view. Also: the page contacts no
+host but its own (no font service, no tracker), and each player describes
+its scene for screen readers. Exits non-zero on a failure.
 """
 import sys
 import time
+from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright
 
@@ -38,11 +41,15 @@ with sync_playwright() as p:
     errs = []
     page.on("pageerror", lambda e: errs.append(str(e)))
     page.on("console", lambda m: errs.append(m.text) if m.type == "error" else None)
+    hosts = set()
+    page.on("request", lambda r: hosts.add(urlparse(r.url).netloc) if r.url.startswith("http") else None)
     page.goto(site + "demo.html")
     page.wait_for_function("[...document.querySelectorAll('divetrope-player')].every((e) => e.dive && e.dive.plan)", timeout=60000)
     page.wait_for_function("[...document.querySelectorAll('divetrope-player')].every((e) => e.shadowRoot.getElementById('loading').classList.contains('done'))", timeout=60000)
     modes = page.evaluate("[...document.querySelectorAll('divetrope-player')].map((e) => e.dive.mode)")
     check(modes == ["player", "scroll"], f"two components on the page: {modes}")
+    alts = page.evaluate("[...document.querySelectorAll('divetrope-player')].map((e) => [e.shadowRoot.getElementById('dive').getAttribute('aria-label'), e.shadowRoot.getElementById('scene-alt').textContent])")
+    check(all(a and a == s for a, s in alts), f"each player describes its scene for screen readers ({alts[0][0]!r})")
 
     # ---- player window
     player = page.locator("divetrope-player.window")
@@ -147,6 +154,7 @@ with sync_playwright() as p:
     check(not frame.evaluate("divetrope.playing"), "iframe pauses when scrolled out of view")
 
     check(not errs, f"no page errors {errs[:3]}")
+    check(hosts == {urlparse(site).netloc}, f"the page contacts only its own host {sorted(hosts)}")
     b.close()
 
 print("PASS" if not bad else f"FAIL: {len(bad)} check(s)")

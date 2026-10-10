@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parent
 ENGINE = ROOT / "divetrope.js"
 TEMPLATES = ROOT / "templates"
 PAGES = {"page.html": "index.html", "embed.html": "embed.html", "demo.html": "demo.html"}
-LAYER_KEYS = ("eyebrow", "headline", "body", "sub", "chips", "hold", "video")
+LAYER_KEYS = ("alt", "eyebrow", "headline", "body", "sub", "chips", "hold", "video")
 SITE_KEYS = ("brand", "page", "theme", "score")
 ALPHA_EDGE = 0.06   # an inner layer's alpha ramps 0 -> 1 over this band (fraction of the frame)
 SEAM_OK, SEAM_WARN = 9, 15
@@ -99,6 +99,19 @@ def export(dive, cfg, site):
     (site / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+def fonts_links(href, esc):
+    """The <link> tags for theme.fontsHref. Self-hosted fonts (a path in the
+    dive's assets/) need no preconnect; a Google Fonts URL gets one, and every
+    visitor's browser then contacts Google, which the EU treats as personal data."""
+    if not href:
+        return ""
+    link = f'<link href="{esc(href)}" rel="stylesheet">'
+    if href.startswith("https://fonts.googleapis.com/"):
+        link = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n  '
+                '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n  ' + link)
+    return link
+
+
 def build(dive, site):
     cfg = load(dive)
     site.mkdir(parents=True, exist_ok=True)
@@ -122,9 +135,7 @@ def build(dive, site):
         "brand_url": esc(brand.get("url", "")),
         "version": stamp,
         "favicon": f'<link rel="icon" href="{esc(brand["logo"])}">' if brand.get("logo") else "",
-        "fonts": (f'<link rel="preconnect" href="https://fonts.googleapis.com">\n  '
-                  f'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n  '
-                  f'<link href="{esc(theme["fontsHref"])}" rel="stylesheet">') if theme.get("fontsHref") else "",
+        "fonts": fonts_links(theme.get("fontsHref"), esc),
     }
     for src, dst in PAGES.items():
         text = (TEMPLATES / src).read_text(encoding="utf-8")
