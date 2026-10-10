@@ -1,0 +1,137 @@
+{
+  "scale": 4,
+  "export_sizes": [
+    3200,
+    2400,
+    1600
+  ],
+  "brand": {
+    "name": "Divetrope",
+    "url": "https://github.com/divetrope/divetrope",
+    "cta": "GitHub",
+    "logo": "mark.svg"
+  },
+  "page": {
+    "title": "Divetrope: endless-zoom stories for the web",
+    "description": "An open-source web component for endless-zoom stories. Each scene hides the next one in its centre.",
+    "loop": true,
+    "intro": {
+      "eyebrow": "Divetrope",
+      "title": "Scroll into the picture.",
+      "sub": "An open-source web component for endless-zoom stories.",
+      "play": "Play with sound",
+      "alt": "or scroll at your own pace"
+    },
+    "loading": "Opening the picture"
+  },
+  "theme": {
+    "ink": "#0b1020",
+    "primary": "#4c6fff",
+    "primaryDeep": "#3651d9",
+    "accent": "#ffb547",
+    "chips": [
+      "#e4e9ff",
+      "#ffeccb",
+      "#ecdfff"
+    ],
+    "fontDisplay": "'Bricolage Grotesque', system-ui, sans-serif",
+    "fontText": "Inter, system-ui, sans-serif",
+    "fontsHref": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Inter:wght@400;500;600&display=swap"
+  },
+  "layers": [
+    {
+      "id": "earth",
+      "label": "Earth",
+      "eyebrow": "Divetrope",
+      "headline": "Scroll into the picture.",
+      "body": "Each scene hides the next one in its centre. Keep going, and the last one hides the first.",
+      "image": "images/00_earth.webp"
+    },
+    {
+      "id": "continent",
+      "label": "Continent",
+      "eyebrow": "One file",
+      "headline": "A web component, no dependencies.",
+      "body": "Add one script tag and a manifest. No framework and no build step on your site.",
+      "image": "images/01_continent.webp"
+    },
+    {
+      "id": "dusk",
+      "label": "Nightfall",
+      "eyebrow": "Three embeds",
+      "headline": "A page, a section, or a player.",
+      "body": "Take over the whole page, pin as a section while readers scroll, or sit in a window with its own Play button.",
+      "image": "images/02_dusk.webp"
+    },
+    {
+      "id": "city",
+      "label": "The city",
+      "eyebrow": "Play or scroll",
+      "headline": "Play it like one long take.",
+      "body": "Play runs the story with an adaptive score. Scroll, drag or tap the dots to take the wheel.",
+      "image": "images/03_city.webp"
+    },
+    {
+      "id": "downtown",
+      "label": "Downtown",
+      "image": "images/04_downtown.webp"
+    },
+    {
+      "id": "rooftops",
+      "label": "Rooftops",
+      "image": "images/05_rooftops.webp"
+    },
+    {
+      "id": "skylight",
+      "label": "Skylight",
+      "eyebrow": "Your brand",
+      "headline": "Copy, colours and fonts in one file.",
+      "body": "Headlines, chips, theme, logo and the closing call to action all live in dive.json.",
+      "image": "images/06_skylight.webp"
+    },
+    {
+      "id": "couple",
+      "label": "The couple",
+      "image": "images/07_couple.webp"
+    },
+    {
+      "id": "table",
+      "label": "Her glass",
+      "eyebrow": "Any images",
+      "headline": "Bring layers from any source.",
+      "body": "Use an image model, a camera or a paintbrush. The build crops, feathers and sizes every layer.",
+      "image": "images/08_table.webp"
+    },
+    {
+      "id": "glass",
+      "label": "Champagne",
+      "image": "images/09_glass.webp"
+    },
+    {
+      "id": "bubbles",
+      "label": "Bubbles",
+      "eyebrow": "Open source",
+      "headline": "MIT licensed.",
+      "body": "Use it in client work, fork it, ship it.",
+      "image": "images/10_bubbles.webp"
+    },
+    {
+      "id": "bubble-galaxy",
+      "label": "The bubble",
+      "image": "images/11_bubble-galaxy.webp"
+    },
+    {
+      "id": "starfield",
+      "label": "Galaxy arm",
+      "eyebrow": "Start here",
+      "headline": "Two example dives ship with it.",
+      "body": "This loop, and a one-minute product commercial that ends on a call to action.",
+      "image": "images/12_starfield.webp"
+    },
+    {
+      "id": "approach",
+      "label": "Home",
+      "image": "images/13_approach.webp"
+    }
+  ]
+}

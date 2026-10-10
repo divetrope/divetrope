@@ -1,0 +1,61 @@
+{
+  "scale": 4,
+  "export_sizes": [3200, 2400, 1600],
+  "brand": {
+    "name": "Your brand",
+    "url": "https://example.com/",
+    "cta": "Get started",
+    "logo": "logo.svg"
+  },
+  "page": {
+    "title": "Your brand: the story in one minute",
+    "description": "One sentence for search results and link previews.",
+    "loop": false,
+    "intro": {
+      "title": "The hook, in a few words.",
+      "sub": "One line on what the reader is about to see.",
+      "play": "Play with sound",
+      "alt": "or scroll at your own pace"
+    },
+    "end": {
+      "eyebrow": "Free to start",
+      "headline": "Say it once more.",
+      "body": "One sentence that earns the click.",
+      "primary": { "label": "Get started", "href": "https://example.com/start" },
+      "secondary": { "label": "Learn more", "href": "https://example.com/" },
+      "rail": "Start"
+    },
+    "loading": "Loading the story"
+  },
+  "theme": {
+    "ink": "#0b1020",
+    "primary": "#4c6fff",
+    "primaryDeep": "#3651d9",
+    "accent": "#ffb547",
+    "chips": ["#e4e9ff", "#ffeccb", "#ecdfff"]
+  },
+  "layers": [
+    {
+      "id": "opening",
+      "label": "Opening",
+      "image": "images/00_opening.webp",
+      "eyebrow": "Two to four words",
+      "headline": "Readable in motion, under eight words.",
+      "body": "One or two sentences, read when the reader pauses or presses More.",
+      "chips": ["Feature", "Feature"],
+      "hold": 6
+    },
+    {
+      "id": "second",
+      "label": "Second scene",
+      "image": "images/01_second.webp",
+      "headline": "Each scene hides the next one in its centre."
+    },
+    {
+      "id": "closing",
+      "label": "Closing",
+      "image": "images/02_closing.webp",
+      "headline": "And the last one hides the first."
+    }
+  ]
+}

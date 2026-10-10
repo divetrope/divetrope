@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="robots" content="noindex">
+  {{fonts}}
+  <style>
+    html, body { margin: 0; height: 100%; background: {{ink}}; overflow: hidden; }
+    divetrope-player { position: fixed; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; }
+  </style>
+  <script src="divetrope.js?v={{version}}" defer></script>
+</head>
+<body>
+  <!-- iframe target: <iframe src="embed.html?autoplay=1&chrome=full" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
+  <divetrope-player src="manifest.json?v={{version}}" mode="player"></divetrope-player>
+  <script>
+    // Options come from the query string: ?autoplay=1&chrome=full|minimal
+    (() => {
+      const q = new URLSearchParams(location.search);
+      const el = document.querySelector('divetrope-player');
+      if (q.get('autoplay') === '1') el.setAttribute('autoplay', '');
+      if (q.get('chrome')) el.setAttribute('chrome', q.get('chrome'));
+    })();
+  </script>
+</body>
+</html>

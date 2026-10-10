@@ -1,0 +1,62 @@
+# Build both example dives, test the player in headless Chrome, and publish
+# the result to GitHub Pages from main. The landing page is examples/space;
+# the commercial lives under /yepedu/.
+name: Site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -r requirements.txt playwright
+      - name: Check seams
+        run: |
+          python build.py check examples/space
+          python build.py check examples/yepedu
+      - name: Build
+        run: |
+          python build.py examples/space --out _site
+          python build.py examples/yepedu --out _site/yepedu
+      - name: Test the player
+        run: |
+          python tools/serve.py _site 8000 &
+          sleep 2
+          python tools/smooth_test.py http://127.0.0.1:8000/yepedu/
+          python tools/embed_test.py http://127.0.0.1:8000/yepedu/
+          python tools/pop_test.py http://127.0.0.1:8000/
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: _site
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="theme-color" content="{{ink}}">
+  {{favicon}}
+  {{fonts}}
+  <style>
+    html { background: {{ink}}; scrollbar-width: none; }
+    html::-webkit-scrollbar { display: none; }
+    body { margin: 0; background: {{ink}}; overflow-x: hidden; overscroll-behavior: none; }
+    .noscript { position: fixed; inset: 0; display: grid; place-content: center; margin: 0; padding: 16px; text-align: center; color: #f6f7f4; font: 16px/1.5 system-ui, sans-serif; }
+    .noscript a { color: inherit; }
+  </style>
+  <script src="divetrope.js?v={{version}}" defer></script>
+</head>
+<body>
+  <divetrope-player src="manifest.json?v={{version}}" mode="page"></divetrope-player>
+  <noscript><p class="noscript">This page needs JavaScript to play. <a href="{{brand_url}}">Go to {{brand_name}}</a>.</p></noscript>
+</body>
+</html>

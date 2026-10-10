@@ -1,0 +1,7 @@
+# Build output
+_site/
+examples/*/site/
+# QA screenshots and renders
+qa/
+*.wav
+__pycache__/

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Divetrope">
+  <rect width="64" height="64" rx="15" fill="#0b1020"/>
+  <g fill="none" stroke-linejoin="round">
+    <rect x="9" y="9" width="46" height="46" rx="8" stroke="#4c6fff" stroke-width="4"/>
+    <rect x="19.5" y="19.5" width="25" height="25" rx="5" stroke="#8fa2ff" stroke-width="3.5" transform="rotate(15 32 32)"/>
+  </g>
+  <rect x="26.5" y="26.5" width="11" height="11" rx="2.5" fill="#ffb547" transform="rotate(30 32 32)"/>
+</svg>

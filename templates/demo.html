@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}: embed demo</title>
+  <meta name="robots" content="noindex">
+  {{favicon}}
+  {{fonts}}
+  <style>
+    :root {
+      --page: #f6f7f4;
+      --text: #14202b;
+      --muted: #55636f;
+      --rule: rgba(20, 32, 43, 0.12);
+      --code-bg: #14202b;
+      --code-text: #e8ecef;
+      --accent: {{primary}};
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --page: #0e151c; --text: #eef1f3; --muted: #9aa7b2; --rule: rgba(238, 241, 243, 0.14); --code-bg: #070b0f; color-scheme: dark; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--page); color: var(--text); font: 17px/1.65 {{font_text}}; }
+    header, main, footer { width: min(760px, 100% - 32px); margin: 0 auto; }
+    header { padding: 48px 0 8px; }
+    .kicker { margin: 0; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+    h1 { margin: 0.4rem 0 0.6rem; font: 600 clamp(2rem, 6vw, 3rem)/1.05 {{font_display}}; letter-spacing: -0.01em; }
+    h2 { margin: 3rem 0 0.4rem; font: 600 1.6rem/1.2 {{font_display}}; }
+    p { margin: 0.8rem 0; }
+    .lede { font-size: 1.12rem; color: var(--muted); }
+    .wide { width: min(1040px, 100% - 32px); margin: 1.6rem auto; }
+    divetrope-player.window { --dt-radius: 16px; box-shadow: 0 24px 60px rgba(20, 32, 43, 0.25); }
+    .frame { position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 60px rgba(20, 32, 43, 0.25); }
+    .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    pre { margin: 1rem 0; padding: 16px 18px; border-radius: 12px; background: var(--code-bg); color: var(--code-text); font: 13.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-x: auto; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    th { font-weight: 600; }
+    .scroll-note { margin: 2rem auto 0; text-align: center; color: var(--muted); font-size: 0.95rem; }
+    footer { padding: 48px 0 64px; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--rule); margin-top: 4rem; }
+  </style>
+  <script src="divetrope.js?v={{version}}" defer></script>
+</head>
+<body>
+  <header>
+    <p class="kicker">{{brand_name}}</p>
+    <h1>Three ways to put the dive on a page</h1>
+    <p class="lede">The same story and the same files, shown as a window inside an article, as a section the reader scrolls through, and as an iframe for sites that cannot run scripts.</p>
+  </header>
+
+  <main>
+    <h2>1. A window in the page</h2>
+    <p>The player keeps to its box. Press Play, drag sideways to scrub, or tap the dots. Once you have pressed or clicked it, the mouse wheel scrubs it too, and hands the scroll back to the page at either end, so readers who only pass by are never caught. More opens the full text while it keeps moving; Pause eases to a stop on the next scene.</p>
+  </main>
+  <div class="wide">
+    <divetrope-player class="window" src="manifest.json?v={{version}}" mode="player"></divetrope-player>
+  </div>
+  <main>
+    <pre><code class="snippet" data-kind="player"></code></pre>
+    <p>Size it like an image: it takes the width it is given and keeps the story's 16:9 shape, or set a height in CSS. Colours and fonts come from the manifest; the page can still override any <code>--dt-*</code> variable.</p>
+
+    <h2>2. A section the reader scrolls through</h2>
+    <p>With <code>mode="scroll"</code> the dive pins to the screen while the reader scrolls past it, then lets the page carry on. Play still works, and the page lands where the story stopped.</p>
+    <p class="scroll-note">Scroll down into the story.</p>
+  </main>
+  <divetrope-player src="manifest.json?v={{version}}" mode="scroll"></divetrope-player>
+  <main>
+    <pre><code class="snippet" data-kind="scroll"></code></pre>
+
+    <h2>3. An iframe</h2>
+    <p>For a CMS that strips scripts, embed the hosted player page. It plays muted on its own when it scrolls into view with <code>?autoplay=1</code>.</p>
+  </main>
+  <div class="wide">
+    <div class="frame"><iframe src="embed.html?autoplay=1&amp;v={{version}}" title="{{title}}" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+  <main>
+    <pre><code class="snippet" data-kind="iframe"></code></pre>
+
+    <h2>Options</h2>
+    <table>
+      <tr><th>Attribute</th><th>Meaning</th></tr>
+      <tr><td><code>src</code></td><td>The story's manifest.json. Layer files are found next to it.</td></tr>
+      <tr><td><code>mode</code></td><td><code>player</code> (default), <code>scroll</code>, or <code>page</code> for a whole page.</td></tr>
+      <tr><td><code>chrome</code></td><td><code>full</code> adds the brand bar and its button; <code>minimal</code> (default outside page mode) keeps only sound and full screen.</td></tr>
+      <tr><td><code>autoplay</code></td><td>Player only: plays muted while at least half of it is in view, until the reader takes over.</td></tr>
+    </table>
+    <p>Script control: <code>el.play()</code>, <code>el.pause()</code>, <code>el.restart()</code>, <code>el.goTo(i)</code>. Events: <code>dt-ready</code>, <code>dt-scene</code>, <code>dt-play</code>, <code>dt-pause</code>, <code>dt-end</code>.</p>
+  </main>
+  <footer>Made with <a href="https://github.com/divetrope/divetrope">Divetrope</a>, open source under the MIT license.</footer>
+
+  <script>
+    // Fill the snippets with this page's real address so they copy and paste as is.
+    (() => {
+      const here = new URL('.', location.href).href;
+      const snippets = {
+        player: `<script src="${here}divetrope.js" defer><\/script>\n<divetrope-player src="${here}manifest.json"></divetrope-player>`,
+        scroll: `<divetrope-player src="${here}manifest.json" mode="scroll"></divetrope-player>`,
+        iframe: `<iframe src="${here}embed.html?autoplay=1" title="{{title}}"\n        style="width:100%; aspect-ratio:16/9; border:0"\n        allow="autoplay; fullscreen" allowfullscreen></iframe>`,
+      };
+      document.querySelectorAll('.snippet').forEach((el) => { el.textContent = snippets[el.dataset.kind]; });
+    })();
+  </script>
+</body>
+</html>
