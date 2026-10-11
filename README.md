@@ -14,8 +14,10 @@ for the copy and colours, and a small Python build that turns your layer
 images into a static site.
 
 **Live:** [the landing page](https://divetrope.github.io/divetrope/) is a
-dive, and the [embed demo](https://divetrope.github.io/divetrope/demo.html)
-shows all three ways to put one on a page.
+dive, the [embed demo](https://divetrope.github.io/divetrope/demo.html)
+shows all three ways to put one on a page, and a
+[one-minute commercial](https://edu.yepgent.com/watch/) ends on a call to
+action.
 
 ## Quick start
 
@@ -113,9 +115,9 @@ a built site:
 - `examples/space`: the landing page. A loop from Earth to a city, a
   rooftop, a glass of champagne, a bubble, a galaxy, and back to Earth.
 - `examples/yepedu`: a one-minute commercial for
-  [Yep Edu](https://edu.yepgent.com/), ending on a call to action. It isn't
-  on this project's site, because GitHub Pages is not for commercial pages;
-  build it with the quick start above.
+  [Yep Edu](https://edu.yepgent.com/), ending on a call to action. It plays
+  at [edu.yepgent.com/watch](https://edu.yepgent.com/watch/) rather than on
+  this project's site, because GitHub Pages is not for commercial pages.
 
 The example images were generated with AI image models.
 
